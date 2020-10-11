@@ -25,16 +25,16 @@ mount -o remount, rw /
 #Step 2) enable UART and system.power.switch----------------
 sleep 2s
 
-if grep -q "^enable_uart=1" "/flash/config.txt"; then
+if grep -q "^enable_uart=1" $config_file; then
 	echo "UART already enabled... Proceed!"
-elif grep -q "^#enable_uart=1" "/flash/config.txt"; then
+elif grep -q "^#enable_uart=1" $config_file; then
 	echo "UART is disabled. Enabling now!"
 	echo "Activating UART - your CPU could be throttled by this"
-	sed -i -e "s|^#\senable_uart=1|enable_uart=1|" "/flash/config.txt" &> /dev/null
+	sed -i -e "s|^#\senable_uart=1|enable_uart=1|" $config_file &> /dev/null
 else
 	echo "UART is disabled."
 	echo "Appending enable_uart=1 to config.txt"
-	echo "enable_uart=1" >> "/flash/config.txt"
+	echo "enable_uart=1" >> $config_file
 fi
 
 #Step 3) Download Python script-----------------------------
@@ -76,11 +76,10 @@ fi
 
 #Step 6) enable overlay file for proper powercut ---------------
 cd /boot/
-File=config.txt
-if ! grep -q "^[ ]*dtoverlay=gpio-poweroff,gpiopin=4,active_low=1,input=1" "$File"; then
+if ! grep -q "^[ ]*dtoverlay=gpio-poweroff,gpiopin=4,active_low=1,input=1" "$config_file"; then
     echo "Enable overlay file"
-    echo "# Overlay setup for proper powercut, needed for Retroflag cases" >> "$File"
-    echo "dtoverlay=gpio-poweroff,gpiopin=4,active_low=1,input=1" >> "$File"
+    echo "# Overlay setup for proper powercut, needed for Retroflag cases" >> "$config_file"
+    echo "dtoverlay=gpio-poweroff,gpiopin=4,active_low=1,input=1" >> "$config_file"
 fi
 
 #-----------------------------------------------------------
