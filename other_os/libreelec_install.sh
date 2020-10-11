@@ -1,7 +1,7 @@
 #!/bin/bash
 #Prestep autodetect which system is used -------------------
 
-if [[ grep -i libreelec /etc/os-release ]]; then
+if grep -iq libreelec /etc/os-release; then
     echo "--> Detected LibreElec system"
     config_file="/flash/config.txt"
     inst_dir="/storage/scripts"
@@ -51,8 +51,8 @@ if [ -e $script ];
 		echo "Script will be installed now! Downloading ..."
 fi
 
-wget -N -q --show-progress "https://raw.githubusercontent.com/fbriois/retroflag-picase/master/other_os/libreelec_SafeShutdown.py"
-wget -N -q --show-progress "https://raw.githubusercontent.com/fbriois/retroflag-picase/master/other_os/libreelec_SafeShutdown.sh"
+wget "https://raw.githubusercontent.com/fbriois/retroflag-picase/master/other_os/libreelec_SafeShutdown.py"
+wget "https://raw.githubusercontent.com/fbriois/retroflag-picase/master/other_os/libreelec_SafeShutdown.sh"
 chmod +x libreelec_SafeShutdown.sh
 
 #Step 4) Enable Python script to run on start up------------
