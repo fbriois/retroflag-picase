@@ -3,7 +3,7 @@
 ## LibreElec installation
 
 Please install "Raspberry Tools PI" on libreelec:
-*Add-ons* -> *Install from repository* -> *Program add-ons* -> *Raspberry Pi Tools"
+*Add-ons* -> *Install from repository* -> *Program add-ons* -> *Raspberry Pi Tools*
 
 Then run on a terminal: 
 ```
