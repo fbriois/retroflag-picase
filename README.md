@@ -1,5 +1,7 @@
 # retroflag-picase
 
+Make sure "SAFE SHUTDOWN" on PCB is set to ON position.
+
 ## LibreElec installation
 
 Please install "Raspberry Tools PI" on libreelec:
@@ -17,4 +19,3 @@ Many thanks to [https://github.com/crcerror](crcerror) for its work
 For RetroPie, RecalBox and BATOCERA:
 See crcerror fork: [https://github.com/crcerror/retroflag-picase](https://github.com/crcerror/retroflag-picase)
 
-Make sure "SAFE SHUTDOWN" on PCB is set to ON position.
