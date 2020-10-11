@@ -75,11 +75,12 @@ fi
 #-----------------------------------------------------------
 
 #Step 6) enable overlay file for proper powercut ---------------
-cd /boot/
 if ! grep -q "^[ ]*dtoverlay=gpio-poweroff,gpiopin=4,active_low=1,input=1" "$config_file"; then
     echo "Enable overlay file"
     echo "# Overlay setup for proper powercut, needed for Retroflag cases" >> "$config_file"
     echo "dtoverlay=gpio-poweroff,gpiopin=4,active_low=1,input=1" >> "$config_file"
+else
+    echo "Overlay already setup"
 fi
 
 #-----------------------------------------------------------
@@ -87,5 +88,5 @@ fi
 #Step 5) Reboot to apply changes----------------------------
 echo "RetroFlag Pi Case Switch installation done. Will now reboot after 3 seconds."
 sleep 3
-# shutdown -r now
+shutdown -r now
 #-----------------------------------------------------------
