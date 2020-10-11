@@ -3,7 +3,7 @@ function stop_kodi() {
 }
 
 function start_kodi() {
-    !systemctl is-active kodi > /dev/null 2>&1 && systemctl start kodi
+    systemctl start kodi
 }
 
 function is_kodi_run() {

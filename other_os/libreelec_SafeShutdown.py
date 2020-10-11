@@ -27,8 +27,8 @@ def init():
 def poweroff():
 	while True:
 		GPIO.wait_for_edge(powerPin, GPIO.FALLING)
-                os.chdir(scriptDir)
- 		output = int(subprocess.check_output(['./libreelec_SafeShutdown.sh', '--kodirun']))
+        os.chdir(scriptDir)
+ 		output = os.system(scriptDir + "/libreelec_SafeShutdown.sh --kodirun")
  		if output:
 			os.system(scriptDir + "/libreelec_SafeShutdown.sh --shutdown")
 		else:
@@ -51,7 +51,7 @@ def reset():
 	while True:
 		GPIO.wait_for_edge(resetPin, GPIO.FALLING)
 		os.chdir(scriptDir)
- 		output = int(subprocess.check_output(['./libreelec_SafeShutdown.sh', '--kodirun']))
+ 		output = os.system(scriptDir + "/libreelec_SafeShutdown.sh --kodirun")
  		if output:
 			os.system(scriptDir + "/libreelec_SafeShutdown.sh --restart")
 		else:
